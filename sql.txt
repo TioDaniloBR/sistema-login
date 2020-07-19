@@ -1,0 +1,10 @@
+CREATE TABLE `users_login`
+.`usuarios` ( `id` INT(4) NOT NULL AUTO_INCREMENT , 
+`username` VARCHAR(20) NOT NULL , 
+`password` VARCHAR(50) NOT NULL , 
+`nome` VARCHAR(120) NOT NULL , 
+`email` VARCHAR(120) NOT NULL , 
+`joined` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+`ativo` BOOLEAN NOT NULL DEFAULT FALSE , 
+PRIMARY KEY (`id`), UNIQUE (`username`)) ENGINE = InnoDB 
+COMMENT = 'tabela para gerenciamento do login dos usuarios do sistema'; 
