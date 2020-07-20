@@ -1,6 +1,14 @@
 <?php
 
 session_start();
+if(count($_SESSION)>0){
+    $_SESSION['ultimaAcao'] = time();
+}
+if(isset($_SESSION['ultimaAcao'])){
+    if(($_SESSION['ultimaAcao']+60) < time()){
+        session_destroy();
+    }
+}
 
 $GLOBALS['config'] = array(
     'mysql' => array(
@@ -10,7 +18,8 @@ $GLOBALS['config'] = array(
         'db'        => 'users_login'
     ),
     'sessao' => array(
-        'nomeSessao' => 'usuario'
+        'nomeSessao' => 'usuario',
+        'nomeToken' => 'token'
     )
 );
 

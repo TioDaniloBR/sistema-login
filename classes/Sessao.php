@@ -29,7 +29,7 @@ class Sessao
         if(self::existe($nome))
         {
             $sessao = self::get($nome);
-            $self::delete($nome);
+            self::delete($nome);
             return $session;
         }else{
             self::put($nome ,$str);
