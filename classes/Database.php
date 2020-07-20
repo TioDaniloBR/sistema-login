@@ -80,19 +80,59 @@ class Database{
         return $this->action('SELECT *', $tabela, $where);
     }
 
-    public function delete(){
+    public function delete($tabela, $where){
         //realiza um delete no banco
+        return $this->action('DELETE', $tabela, $where);
+
     }
 
     public function insert($tabela, $campos = array()){
         //realiza um insert no banco
-        $teste = ['teste1','teste2','teste3'];
-        $this->query("INSERT INTO `{$tabela}`(`username`, `password`, `nome`, `email`) VALUES (?,?,?,?)"
-        ,array('danilo','123','danilo silva','danilo@danilo.com'));
+        if(count($campos))
+        {
+            $chave_campo = array_keys($campos);
+            $valor = null;
+            $x = 1;
+
+            foreach($campos as $campo)
+            {
+                $valor .= '?';
+                if($x < count($campos))
+                {
+                    $valor .= ', ';
+                }
+                $x++;
+            }
+            $sql = "INSERT INTO {$tabela} (`".implode('`,`', $chave_campo)."`) VALUES ({$valor})";
+
+            if(!$this->query($sql, $campos)->error())
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public function update(){
+    public function update($tabela, $id, $campos = array()){
         //realiza um update no banco
+        $set    = '';
+        $x      = 1;
+
+        foreach($campos as $nome_campo=>$valor)
+        {
+            $set .= "{$nome_campo} = ?";
+            if($x < count($campos)){
+                $set .= ", ";
+            }
+            $x++;
+        }
+        $sql = "UPDATE {$tabela} SET {$set} WHERE id = {$id}";
+        if(!$this->query($sql, $campos)->error())
+        {
+            return true;
+        }
+        return false;
+
     }
 
     public function results(){
