@@ -8,6 +8,9 @@ $GLOBALS['config'] = array(
         'username'  => 'root',
         'password'  => '',
         'db'        => 'users_login'
+    ),
+    'sessao' => array(
+        'nomeSessao' => 'usuario'
     )
 );
 

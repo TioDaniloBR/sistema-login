@@ -149,4 +149,9 @@ class Database{
         //retorna a quantidade de linhas afetadas pela query
         return $this->_count;
     }
+
+    public function first()
+    {
+        return $this->_results[0];
+    }
 }
