@@ -5,7 +5,18 @@
         if(Token::checarToken(Input::get('token')))
         {
             //implementar validação dos dados
-            if(true)//se a validação dos dados passou
+            $validar = new Validacao();
+            $validacao = $validar->checar($_POST, array(
+                'username' => array(
+                    'nomeCampo' => 'username',
+                    'required' => true
+                ),
+                'password' => array(
+                    'nomeCampo' => 'password',
+                    'required' => true
+                )
+            ));
+            if($validacao->passou())//se a validação dos dados passou
             {
                 $usuario = new Usuario();
                 $login = $usuario->login(Input::get('username'),Input::get('password'));
@@ -18,6 +29,10 @@
                 }
             }else{
                 //erros de validação
+                foreach($validacao->erros() as $erro)
+                {
+                    echo $erro."<br>";
+                }
             }
         }
     }

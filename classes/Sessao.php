@@ -30,7 +30,7 @@ class Sessao
         {
             $sessao = self::get($nome);
             self::delete($nome);
-            return $session;
+            return $sessao;
         }else{
             self::put($nome ,$str);
         }

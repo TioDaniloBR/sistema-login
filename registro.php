@@ -6,7 +6,32 @@ if(Input::existe())
     if(Token::checarToken(Input::get('token')))
     {
         //criar as regras de validação dos campos
-        if(true)//se a validação passou
+        $validar = new Validacao();
+        $validacao = $validar->checar($_POST, array(
+            'username' =>array(
+                'nomeCampo' => 'nome de usuário',
+                'required' => true,
+                'min' => 4,
+                'max' => 20,
+                'unico' => 'usuarios'
+            ),
+            'password' => array(
+                'nomeCampo' => 'senha',
+                'required' => true,
+                'min' => 6
+            ),
+            're_password' => array(
+                'nomeCampo' => 'Repetir senha',
+                'igual' => 'password'
+            ),
+            'nome' => array(
+                'nomeCampo' => 'Nome',
+                'required' => true,
+                'min' => 3,
+                'max' => 120
+            )
+        ));
+        if($validacao->passou())//se a validação passou
         {
             $usuario = new Usuario();
             $salt = Criptografia::salt(1608);
@@ -29,6 +54,10 @@ if(Input::existe())
             }
         }else{
             //erros de validação
+            foreach($validacao->erros() as $erro)
+                {
+                    echo $erro."<br>";
+                }
         }
     }
 }
@@ -56,7 +85,7 @@ if(Input::existe())
         <label for="username">Nome</label>
         <input type="text" name="nome" id="nome" class="form-control">
         <label for="username">Email</label>
-        <input type="text" name="email" id="email" class="form-control">
+        <input type="email" name="email" id="email" class="form-control">
         <input type="hidden" name="token" value="<?php echo Token::gerarToken(); ?>">
         <input type="submit" value="Enviar" class="btn btn-primary btn-block mt-4">
     </form>

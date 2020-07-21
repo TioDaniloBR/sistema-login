@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('America/Sao_Paulo');
 session_start();
 if(count($_SESSION)>0){
     $_SESSION['ultimaAcao'] = time();

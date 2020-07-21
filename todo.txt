@@ -1,0 +1,9 @@
+21/07 17:20
+-adicionar email nos campos de validação, utilizar regra para ver se tem um 2 na string
+-adicionar validação de campos na pagina update
+-implementar a página mudar senha
+
+
+futuro
+-guardar todos os erros que aparecem para o usuario em um array e apresentá-los
+de uma forma mais bonita (na parte de baixo da página por exemplo)
