@@ -1,7 +1,7 @@
 21/07 17:20
 -adicionar email nos campos de validação, utilizar regra para ver se tem um 2 na string
 -adicionar validação de campos na pagina update
--implementar a página mudar senha
+-(implementar a página mudar senha) - feito
 
 
 futuro

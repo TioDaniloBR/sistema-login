@@ -45,7 +45,7 @@
                         case 'igual':
                             if($valor != $fonte[$valorRegra])
                             {
-                                $this->adicionarErro("O {$valorRegra}s digitados nos campos prencisam ser iguais.");
+                                $this->adicionarErro("O {$valorRegra}s digitados nos campos precisam ser iguais.");
                             }
                     }
                 }
