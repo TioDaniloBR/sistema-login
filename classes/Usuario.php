@@ -70,7 +70,7 @@ class Usuario{
             $usuario = $this->search($username);
             if($usuario)
             {
-                if($this->dados()->password === Criptografia::criar($password,$this->dados()->salt))
+                if($this->dados()->password === Criptografia::criar($password,$this->dados()->salt) && $this->dados()->ativo == true)
                 {
                     Sessao::put($this->_nomeSessao, $this->dados()->id);
                     return true;

@@ -30,4 +30,6 @@ $campos = array(
 // var_dump(count($_SESSION));
 // echo md5(uniqid());
 //var_dump(password_hash(1608,PASSWORD_DEFAULT));
-var_dump(date('d-m-Y H:i:s'));
+//var_dump(date('d-m-Y H:i:s'));
+//echo (time()+60)."-----".time();
+var_dump($_SESSION);

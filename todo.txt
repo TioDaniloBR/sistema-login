@@ -1,7 +1,9 @@
 21/07 17:20
 -adicionar email nos campos de validação, utilizar regra para ver se tem um 2 na string
--adicionar validação de campos na pagina update
--(implementar a página mudar senha) - feito
+xxx(adicionar validação de campos na pagina update) - feito
+xxxx(implementar a página mudar senha) - feito
+xxxx(condição de usuário ativo inserido na função login) - feito
+xxxx(login permanece ativo por um tempo de 2000 segundos apos a ultima iteração) - feito
 
 
 futuro

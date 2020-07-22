@@ -54,7 +54,7 @@
         <label for="username">Usuário</label>
         <input type="text" name="username" id="username" class="form-control">
         <label for="password">Senha</label>
-        <input type="text" name="password" id="password" class="form-control">
+        <input type="password" name="password" id="password" class="form-control">
         <input type="hidden" name="token" value="<?php echo Token::gerarToken(); ?>">
         <input type="submit" value="Enviar" class="btn btn-primary btn-block mt-4">
         <p id="ainda">Ainda não é cadastrado? Clique <a href="registro.php">aqui.</a></p>

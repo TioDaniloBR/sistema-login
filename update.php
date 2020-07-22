@@ -12,7 +12,22 @@ if(Input::existe())
     if(Token::checarToken(Input::get('token')))
     {
         //implementar validação
-        if(true)//se a validação passar
+        $validar = new Validacao();
+        $validacao = $validar->checar($_POST,array(
+            'nome'=> array(
+                'nomeCampo' => 'Nome',
+                'required' => true,
+                'min' => 2,
+                'max' => 120
+            ),
+            'email' => array(
+                'nomeCampo' => 'Email',
+                'required' => true,
+                'min' => 3,
+                'max' => 120
+            )
+        ));
+        if($validacao->passou())//se a validação passar
         {
             $usuario = new Usuario();
             try{
@@ -27,6 +42,10 @@ if(Input::existe())
             }
         }else{
             //se a validação falhar
+            foreach($validacao->erros() as $erro)
+            {
+                echo $erro."<br>";
+            }
         }
     }
 }
@@ -46,9 +65,9 @@ if(Input::existe())
     <form action="" method="post" class="form-signin">
         <h1>Atualize seus dados</h1>
         <label for="username">Nome</label>
-        <input type="text" name="nome" id="nome" class="form-control">
+        <input type="text" name="nome" id="nome" class="form-control" value="<?php echo $usuario->dados()->nome; ?>">
         <label for="username">Email</label>
-        <input type="text" name="email" id="email" class="form-control">
+        <input type="text" name="email" id="email" class="form-control" value="<?php echo $usuario->dados()->email; ?>">
         <input type="hidden" name="token" value="<?php echo Token::gerarToken(); ?>">
         <input type="submit" value="Enviar" class="btn btn-primary btn-block mt-4">
     </form>

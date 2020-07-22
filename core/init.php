@@ -2,13 +2,18 @@
 date_default_timezone_set('America/Sao_Paulo');
 session_start();
 if(count($_SESSION)>0){
+    if(isset($_SESSION['ultimaAcao'])){
+        if(($_SESSION['ultimaAcao']+2000) < time()){
+            session_destroy();
+            header('Location:index.php');
+        }else{
+            $_SESSION['ultimaAcao'] = time();        
+        }
+    }else{
     $_SESSION['ultimaAcao'] = time();
-}
-if(isset($_SESSION['ultimaAcao'])){
-    if(($_SESSION['ultimaAcao']+60) < time()){
-        session_destroy();
     }
 }
+
 
 $GLOBALS['config'] = array(
     'mysql' => array(
